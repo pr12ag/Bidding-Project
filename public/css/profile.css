@@ -1,0 +1,180 @@
+
+*
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.list ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: right;
+}
+.list ul li {
+	float: left;
+	margin-top: 30px;
+	display: inline;
+}
+
+.list ul li a{
+	font-weight: 20px;
+	color:#0584F2;
+	font-size: 17px;
+	padding-right: 30px;
+	margin-left: 20px;
+}
+.list ul li a:hover {
+	color:#132226;
+	
+}
+.logo img{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+	
+.tophead{
+	background-color: #F1F3F2;
+	/*position:fixed;
+	z-index:+1;
+	width: 100%;*/
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: +1;
+}
+
+
+.heading
+{
+	margin-top:20px;
+	font-size: 50px;
+	color:#32353b;
+	
+}
+.heading p
+{
+	margin-bottom: 0px;
+}
+.sub-heading
+{
+	font-size:25px;
+	color:#73737a;
+	padding-left: 3px;
+	margin-top: 4px;
+	line-height: 1.432;
+}
+.formname
+{
+	margin-top: 30px;
+	
+
+}
+.formname label
+{
+	font-size: 20px;
+	padding-left: 0px;
+	color: #707276;
+}
+.formname input[type=text]
+{
+	width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+.recom
+{
+	color:#73737a;
+	font-size:15px;
+}
+.dottedborder
+{
+	border: 2px dotted #73737a ;
+	margin-top: 15px;
+	text-align: center;
+	border-radius: 4px;
+	width: 98%;
+	padding: 12px;
+	box-sizing: border-box;
+	resize: vertical;
+	margin-bottom: 16px;
+	margin-left: 0px;
+}
+input[type=submit] {
+    background-color: white;
+    color: #0584F2;
+    padding: 12px 20px;
+    border: 2px solid #0584F2;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    width:60%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.profilepic img
+{
+	width: 120px;
+	height: 120px;
+	margin-top: 10px;
+}
+.choosefile input[type=file]
+{
+	
+    color: #0584F2;
+    padding: 10px 2px;
+
+    
+    font-weight: bold;
+    
+    
+    margin-top: 5px;
+    /*margin-bottom: 50px;*/	
+}
+.footer-background
+{
+	background-image: url("../img/footeer.jpg");
+	background-size: cover;
+	position: relative;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 210px;
+	opacity: 0.8;
+}
+.footer-padding
+{
+	padding-right: 0px;
+	padding-left: 0px;
+
+}
+.footer-logo
+{
+	text-align: center;
+	margin-top: 20px;
+}
+.footer-content
+{
+	text-align: center;
+	color:black;
+	margin-top: 5px;
+	
+}
+.footer-data
+{
+	margin-bottom: 0px;
+}
+.footer-prowo
+{
+	font-weight: bold;
+}
+
+
