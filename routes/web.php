@@ -37,20 +37,35 @@ Route::post('jobProposal','JobController@postJobProposal')->name('jobProposal');
 Route::get('viewjob','JobController@viewJob')->name('viewjob');//view job proposal
 
 Route::get('mail','MailController@send')->name('mail');
-//mail controller
+//mail 
 
-Route::get('profile','ProfileController@info')->name('profile');//profile controller
+Route::get('editprofile','ProfileController@editInfo')->name('editprofile');//profile 
 
 Route::post('updateprofile','ProfileController@updateProfile')->name('updateprofile');//update profile
 
+Route::get('profile','ProfileController@userInfo')->name('profile');//profil 
+
+Route::get('plans','PlansController@plansInfo')->name('plans');// purchase plans
 
 Route::post('uploadprofilepic','UploadFileController@uploadProfilePic')->name('uploadprofilepic');//upload file
+Route::get('download/attachment/{file}',function($file){
+    	 $filepath= public_path(). "/uploads/".$file;
 
-Route::get('test',function()
+    $headers = array(
+              'Content-Type: application/pdf',
+            );
+
+    return Response::download($filepath, $file, $headers);
+    });
+Route::get('download/attachment/',function(){
+    	return Redirect::back();
+    });
+
+Route::get('test/{id}',function ($id)
 {
-	 $msg ="sample msg";
+	 echo $id;
 	 
-	 return view('test')->with('msg',$msg);
+	 return view('test');
 });
 
 Route::get('/', function () {

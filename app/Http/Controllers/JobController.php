@@ -18,16 +18,31 @@ class JobController extends Controller
     }
     public function postJob(Request $req)
     {	
-    	
         if(session()->has('email'))
         {
+
+
+        $file =  $req -> file('attachment');
+        $filename = "";
+        if(isset($file))
+        {
+            $count = DB::table('counter')->where('name','count')->first();
+        $extension=$file->getClientOriginalExtension();
+      $filename='attachment'.$count->value.'.'.$extension;
+      $destinationPath = 'uploads';
+      $file->move($destinationPath,$filename);
+      $data = array(
+        'value' => ($count->value+1),
+        );
+      DB::table('counter')->where('name','count')->update($data);
+      }
 
     	$projectCategory        =         $req->input('category');
     	$projectTitle           =         $req->input('projectTitle');
     	$projectDescription     =         $req->input('projectDescription');
     	$projectPrice           =         $req->input('projectPrice');
     	$duration               =         $req->input('duration');
-    	$deadline               =         $req->input('deadline');
+    	/*$deadline               =         $req->input('deadline');*/
     	$attachment             =         $req->input('attachment');
 
 
@@ -49,7 +64,8 @@ class JobController extends Controller
     		'description'     =>  $projectDescription,
     		'durtion'         =>  $duration,
     		'cost'            =>  $projectPrice,
-    		'deadline'        =>  $deadline  ,
+    		/*'deadline'        =>  $deadline  ,*/
+            'attachment'      => $filename ,
     		);
     	DB::table('projects') ->  insert($data);
     	$msg="Your Job has been Posted !!!!";
@@ -130,8 +146,8 @@ class JobController extends Controller
         	$email =session()->get('email');
         	$user          =  DB::table('users')->where('email', $email)->first(); 
         	$user_id     =  $user->id;
-        	$projects    =  DB::table('projects')->where('client_id',$user_id)->get();
-        	$proposals   =  DB::table('proposals')->where('user_id',$user_id)->get();
+        	$projects    =  DB::table('projects')->where('client_id',$user_id)->orderBy('id','DESC')->get();
+        	$proposals   =  DB::table('proposals')->where('user_id',$user_id)->orderBy('id','DESC')->get();
              return view('viewjob')->with('projects',$projects)->with('proposals',$proposals);
 
         	}

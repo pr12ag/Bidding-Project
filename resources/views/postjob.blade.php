@@ -22,9 +22,9 @@
     <div class="col-md-10 list">
       <ul>
           <li><a href="userHome">Home</a></li>
-          <li><a href="postjob">Post a Job </a></li>
+          <li><a href="">Post a Job </a></li>
           <li><a href="searchjobs">Search Jobs</a></li>
-          <li><a href="">View Jobs</a></li>
+          <li><a href="viewjob">View Jobs</a></li>
           <li><a href="logout">LOGOUT</a></li>
       </ul>
     </div>
@@ -34,7 +34,10 @@
 </header>
 
 <div class="container">
-	<form action="postjob" method="post">
+	<!-- <form action="postjob" method="post"> -->
+   <?php
+         echo Form::open(array('url' => '/postjob','files'=>'true'));
+         ?>
    {{ csrf_field() }} 
     <div class="headingjobpost"><h1><center>JOB POST</center></h1></div> 
       <div class="form-group abc">
@@ -69,10 +72,10 @@
       <label for="pwd">Duration</label>
       <input type="text" class="form-control" id="pwd" placeholder="Duration" name="duration" required="">
       </div>
-      <div class="form-group  abc">
+      <!-- <div class="form-group  abc">
       <label for="pwd">Deadline</label>
       <input type="date" class="form-control" id="pwd" placeholder="Deadline" name="deadline" required="">
-      </div>
+      </div> -->
       
       <div class="form-group  abc">
       <label for="pwd">Attachment (Not more than 5MB)</label>

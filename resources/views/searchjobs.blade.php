@@ -48,7 +48,8 @@
   <th>DESCRIPTION</th>
   <th>DURATION</th>
   <th>COST</th>
-  <th>DEADLINE</th>
+  <!-- <th>DEADLINE</th> -->
+  <th>ATTACHMENT</th>
   <th>VIEW JOB</th>
 </tr>
 
@@ -61,7 +62,13 @@
                     <td>{{$row->description}}</td>
                     <td>{{$row->durtion}}</td>
                     <td>{{$row->cost}}</td>
-                    <td>{{$row->deadline}}</td>
+                    <?php
+                    $url= "#";
+                    if(isset($row->attachment)&&$row->attachment!="")
+                      $url = "/download/attachment/".$row->attachment;
+                    ?>
+                    <td><a href="{{$url}}">
+                    <img src="../img/office.png"></a></td>
 
                     
                     <td>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>user-profile</title>
+  <title>profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -30,79 +30,135 @@
     </div>
   </div>
 </div><!--end of header --> 
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-<div class="container"><!--content-->
+<!--content-->
+<div class="container">
   <div class="row">
-    <div class="col-md 12 heading">
-      <p>Edit your Profile</p>
+    <div class="col-md-12 profile-heading">
+      <p>Profile</p>
     </div>
-    <div class="col-md-12 sub-heading">
-      <p>Fill in your profile information</p>
+    <div class="col-md-4 profile-pic">
+      <img src="uploads/{{$profile->profilepicture}}">
     </div>
+    <div class="col-md-8 profile-name">
+      <p>Pragya Sharma</p>
+    </div>
+    <hr>
   </div>
+  
+  <div class="row">
+    <div class="col-md-4 info">
+      <div class="col-md-12 rate-info">
+        <p>{{$profile->perhourrate}} $</p>
+      </div>
+      <div class="col-md-12 skills-info">
+        <p>{{$profile->skills}}</p>
+      </div>
+      <div class="col-md-12 location-info">
+        <p>{{$user->location}}</p>
+      </div>
+      <div class="col-md-12 awards-info">
+      <p>no.of awards</p>
+      </div>
+      <div class="col-md-12 edit-btn">
+        <a href="editprofile">EDIT</a>
+      </div>
+      <div class="vl"></div>
+    </div>
+    <div class="col-md-8 buyer-seller-content">
+  <div class="row">
+    <div class="col-md-12 tab">
+  <button class="col-md-6 tablinks" onclick="openJob(event, 'projects')" id="defaultOpen">Projects</button>
+  <button class="col-md-6 tablinks" onclick="openJob(event, 'proposals')">Proposals</button>
+</div>
+</div>
+    <div id="projects" class="col-md-12 jobs">
+  <center>
+<table> 
+<tr>
+  <th>TITLE</th>
+  <th>DESCRIPTION</th>
+  <th>DURATION</th>
+  <th>COST</th>
+  <!-- <th>DEADLINE</th> -->
+  <th>ATTACHMENT</th>
+
+</tr>
+
+     @foreach($projects as $row)
+              <form action="#" method="get">
+                <input type="hidden" name="project_id" value="{{$row->id}}" >
+                <tr>
+
+                    <td>{{$row->title}}</td>
+                    <td>{{$row->description}}</td>
+                    <td>{{$row->durtion}}</td>
+                    <td>{{$row->cost}}</td>
+                  
+                    <?php
+                    $url= "#";
+                    if(isset($row->attachment)&&$row->attachment!="")
+                      $url = "/download/attachment/".$row->attachment;
+                    ?>
+                    <td><a href="{{$url}}">
+                    <img src="../img/office.png"></a></td>
+
+                </tr>
+              </form>
+     @endforeach
+                        
+</table>
+</center>
+</div>
+<div id="proposals" class="col-md-12 jobs">
+<center>
+<table> 
+<tr>
+  <th>PROJECT ID</th>
+  <th>PROPOSAL</th>
+  <th>DURATION</th>
+  <th>COST</th>
+  <th>UPFRONT</th>
 
   
+ <!--  <th>VIEW JOB</th> -->
+</tr>
 
-  <div class="col-md-6 formname">
-    <label for="fname">First Name</label>
-    <br>
-    <input type="text" id="fname" name="firstname" value="{{$user->firstName}}" readonly="">
-  </div>
-  <div class="col-md-6 formname">
-    <label for="lname">Last Name</label>
-    <br>
-    <input type="text" id="lname" name="lastname" value="{{$user->lastName}}" readonly="">
-  </div>
-  <div class="col-md-12 formname">
-    <label for="lname">Profile Picture <span class="recom">(RECOMMENDED)</span></label>
-  </div>
-  <div class="col-md-2 profilepic">
-    <img src="uploads/{{$profile->profilepicture}}  ">
-  </div>
-  <!-- <div class="col-md-12 dottedborder">
-    <span class="attachfiled" id="attachmentfile">Drop file here or</span>
-    <a class="attachfile-links" id="attachmentfile" href="#">Browse</a>
-    <span class="attachfile" id="attachmentfile">to add attachments</span>
-  </div> -->
-  <div class="col-md-5">
-  <?php
-         echo Form::open(array('url' => '/uploadprofilepic','files'=>'true'));
-         echo 'Select the file to upload.';
-         echo "<div class='choosefile'>".Form::file('image')."</div>";
-         echo Form::submit('Upload File');
-         echo Form::close();
-      ?>
-  </div>
-  <div class="col-md-12">
-  <form action="updateprofile" method="Post"> 
-     {{ csrf_field() }} 
+     @foreach($proposals as $row)
+              <form action="#" method="get">
+                <input type="hidden" name="project_id" value="{{$row->id}}" >
+                <tr>
 
-  <div class="col-md-6 formname">
-    <label for="lname">Per Hour Rate</label>
-    <span class="input-group-addon">$</span>
-    <input type="text" id="rate" name="perhrate" placeholder="" value="{{$profile->perhourrate}}">
-  </div>
-  <div class="col-md-12 formname">
-    <label for="lname">Your Profile Skills</label>
-    <br>
-    <input type="text" id="skills" name="skills" placeholder="Type here to add.." value="{{$profile->skills}}">
-  </div>
-  <div class="col-md-12 formname">
-    <label for="lname">Location <span class="recom">(CITY)</span></label>
-    <br>
-    <input type="text" id="location" name="location" placeholder="Type here to add.."  value="{{$user->location}}">
-  </div>
-  <div class="col-md-6">
-    <input type="submit" value="DONE">  
+                    <td>{{$row->project_id}}</td>
+                    <td>{{$row->description}}</td>
+                    <td>{{$row->duration}}</td>
+                    <td>{{$row->cost}}</td>
+                    <td>
+                    <?php
+                    if(isset($row->upfront_value))
+                      echo $row->upfront_value;
+                      else
+                        echo "0";
+                    ?>%
+                    </td>
+
+                   
+
+                    
+                   <!--  <td>
+                        <button type="hidden" class="btn btn-primary">view</button>
+                    </td> -->
+                </tr>
+              </form>
+     @endforeach
+                        
+</table>
+</center>
+
+</div>
+</div>
   </div>
 </div>
-</div><!--end of content-->
+<!--end of content-->
 <footer> <!-- footer code -->
 <div class="container-fluid footer-padding">
   <div class="footer-background">
@@ -122,21 +178,23 @@
   </div>
 </div>
 </footer> <!-- end of footer code -->
-</body>
 <script>
-window.onscroll = function() {myFunction()};
-
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
+function openJob(evt, jobName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("jobs");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(jobName).style.display = "block";
+    evt.currentTarget.className += " active";
 }
-</script>
-</html>
 
-    
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+</body>
+</html>

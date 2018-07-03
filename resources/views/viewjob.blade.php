@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <title>post-a-job form</title>
+  <title>View Jobs</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -50,8 +50,9 @@
   <th>DESCRIPTION</th>
   <th>DURATION</th>
   <th>COST</th>
-  <th>DEADLINE</th>
- <!--  <th>VIEW JOB</th> -->
+  <!-- <th>DEADLINE</th> -->
+  <th>ATTACHMENT</th>
+
 </tr>
 
      @foreach($projects as $row)
@@ -63,8 +64,18 @@
                     <td>{{$row->description}}</td>
                     <td>{{$row->durtion}}</td>
                     <td>{{$row->cost}}</td>
-                    <td>{{$row->deadline}}</td>
+                  
+                    <?php
+                    $url= "#";
+                    if(isset($row->attachment)&&$row->attachment!="")
+                      $url = "/download/attachment/".$row->attachment;
+                    ?>
+                    <td><a href="{{$url}}">
+                    <img src="../img/office.png"></a></td>
 
+
+                    
+                    <!-- <td> -->
                     
                    <!--  <td>
                         <button type="hidden" class="btn btn-primary">view</button>
@@ -74,9 +85,10 @@
      @endforeach
                         
 </table>
-</div>
-</div>
 </center>
+</div>
+</div>
+
 <div class="row">
 <div class="col-md-12 jobs">
 <center><h3>PROPOSALS</h3>
@@ -135,3 +147,11 @@
         echo "<script type='text/javascript'>alert('$msg')</script>";
 @endif
 </html>
+
+
+
+
+
+
+
+

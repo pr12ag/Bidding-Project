@@ -32,7 +32,8 @@
                         ?>
               <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="profile">Profile</a></li>
+                <li><a href="profile">Profile</a> </li> 
+                <li><a href="editprofile">Edit Profile</a></li>
                 <li><a href="about">About Us</a></li>
                 <li><a href="work">How It Works</a></li>
                 <li class="divider">drop down menu logout is here</li>

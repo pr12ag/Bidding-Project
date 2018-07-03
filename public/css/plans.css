@@ -1,0 +1,156 @@
+
+*
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.list ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: right;
+}
+.list ul li {
+	float: left;
+	margin-top: 30px;
+	display: inline;
+}
+
+.list ul li a{
+	font-weight: 20px;
+	color:#0584F2;
+	font-size: 17px;
+	padding-right: 30px;
+	margin-left: 20px;
+}
+.list ul li a:hover {
+	color:#132226;
+	
+}
+.logo img{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+	
+.tophead{
+	background-color: #F1F3F2;
+	/*position:fixed;
+	z-index:+1;
+	width: 100%;*/
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: +1;
+}
+.plan-heading
+{
+	margin-top: 30px;
+
+}
+.plan-heading p
+{
+	font-size: 40px;
+	color:#32353b;
+	font-weight: bold;
+
+}
+.plans
+{
+	background-color:#F1F3F2;
+	margin-top: 20px;
+	height: 300px;
+	border:1px solid #0584F2;
+	border-radius: 10px;
+}
+.buy-optn
+{
+	font-size: 25px;
+	padding: 10px;
+	color:#0584F2;
+	border:2px solid #0584F2;
+	text-align: center;
+	font-weight:50%;
+	margin-top: 8%;
+	background-color: white;
+	border-radius: 10px;
+	width:30%;
+	margin-left: 18%;
+}
+.plan
+{
+	margin-top: 4%;
+}
+.plan p
+{
+	font-size: 25px;
+	color:#0584F2;
+	border:2px solid #0584F2;
+	padding: 10px;
+	text-align: center;font-weight:50%;
+	background-color: white;
+	border-radius: 10px;
+	width:70%;
+	margin-left: 18%;
+}
+.plan input[type=submit]
+{
+	background-color: #0584F2;
+    color:white;
+    padding: 12px 20px;
+    border: 2px solid #0584F2;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    width:60%;
+    margin: 20px 0px 0px 125px;
+    
+}
+.plan input[type=submit]:hover
+{
+	background-color: white;
+	color:#0584F2;
+	border: 2px solid #0584F2;
+    border-radius: 4px;
+}
+.footer-background
+{
+	background-image: url("../img/footeer.jpg");
+	background-size: cover;
+	position: relative;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 210px;
+	opacity: 0.8;
+}
+.footer-padding
+{
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-top: 40px;
+
+}
+.footer-logo
+{
+	text-align: center;
+	margin-top: 20px;
+}
+.footer-content
+{
+	text-align: center;
+	color:black;
+	margin-top: 5px;
+	
+}
+.footer-data
+{
+	margin-bottom: 0px;
+}
+.footer-prowo
+{
+	font-weight: bold;
+}
